@@ -85,11 +85,17 @@ class tache
     private $id;
     public $nom;
 
-    public function newlist($nom)
+    public function newlist($nom,$iduser)
     {
     	$connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
 
-    	$reponse = $connexion->query("SELECT* FROM listes WHERE nom='".$nom."'");
+    	$reponse = $connexion->query("SELECT* FROM listes WHERE nom='".$nom."' AND id_utilisateur='".$iduser."'");
+        $resultat=$reponse->fetchAll();
+
+        if(empty($resultat))
+        {
+        $requete= $connexion->query("INSERT INTO listes (nom, id_utilisateur) VALUES ('$nom', '$iduser')");
+        }
 
     }
 
