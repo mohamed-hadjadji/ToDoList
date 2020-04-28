@@ -1,5 +1,10 @@
 $(document).ready(function () {
-       
+    $('#ajoutliste').keyup(function (event) {
+        if (event.keyCode == 13) {
+            $('#validliste').click();
+            $('#ajoutliste').blur();
+        }
+    });  
 
     $('#validliste').click(function () {
         var nom = $('#ajoutliste').val(); 
@@ -13,6 +18,8 @@ $(document).ready(function () {
         console.log(msg);
             });
          }
+        
+        $('#ajoutliste').val('');
         });
     });
         
