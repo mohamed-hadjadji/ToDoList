@@ -1,4 +1,5 @@
 $(document).ready(function () {
+   
     $('#ajoutliste').keyup(function (event) {
         if (event.keyCode == 13) {
             $('#validliste').click();
@@ -21,7 +22,8 @@ $(document).ready(function () {
         
         $('#ajoutliste').val('');
         });
-    });
+
+});
         
 
 

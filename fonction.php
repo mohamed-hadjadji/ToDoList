@@ -6,11 +6,23 @@
 
  $tache = new tache();
 
- $iduser = $_SESSION["id"];
- $nom = $_POST['titre'];
+ $function = $_POST["function"]; 
 
- 
- $tache->newlist($nom, $iduser);
+if($function ="newlist")
+{
+	
+		$iduser = $_SESSION["id"];
+		$nom = $_POST['titre'];
+
+		$tache->newlist($nom, $iduser);
+}
+elseif($function="afficherlist")
+{
+	
+	    $iduser = $_SESSION["id"];
+	    $tache->afficherlist($iduser);   
+
+}
  
 
 ?>

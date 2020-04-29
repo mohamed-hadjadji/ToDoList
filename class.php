@@ -99,6 +99,16 @@ class tache
 
     }
 
+    public function afficherlist($iduser)
+    {
+        $connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
+
+       $requetaff = $connexion->query("SELECT * FROM listes WHERE id_utilisateur= '". $iduser ."'");
+
+       $resul=$requetaff->fetchAll();
+       return $resul;
+    }
+
 }
 
 
