@@ -99,7 +99,39 @@ class tache
 
     }
 
+    public function afficherlist($iduser)
+    {
+        $connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
+
+       $requetaff = $connexion->query("SELECT * FROM listes WHERE id_utilisateur= '". $iduser ."'");
+
+       $resul=$requetaff->fetchAll();
+       return $resul;
+    }
+
 }
 
 
+
+function recupDonner()
+  {
+
+    
+    $connexion=mysqli_connect("localhost","root","","tdl");
+    
+    $id = $_SESSION['id'];
+    $reqdonner = "SELECT nom FROM listes as n INNER JOIN utilisateurs = id_utilisateur where id_utilisateur= $id";
+   
+    $requet_exec = mysqli_query($connexion,$reqdonner);
+    $liste_tabl = mysqli_fetch_all($requet_exec);
+  
+     
+    $count = mysqli_num_rows($requet_exec);
+
+
+  for ($i=0; $i <$count ; $i++)
+     { 
+      echo $liste_tabl[$i][0]."<br/>";
+     }  
+  }
 ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include("class.php");
 if (isset($_SESSION['login']))
 {
  echo "Bienvenue";
@@ -36,6 +36,7 @@ if (isset($_SESSION['login']))
 	            </article>
 			    <article  id='tachefini'>
 			    	<p>Taches Accomplies</p>
+			    	<p><?php recupDonner() ; ?></p>
 			    </article>
 	        </section>
 	        
