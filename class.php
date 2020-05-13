@@ -95,6 +95,7 @@ class tache
         if(empty($resultat))
         {
         $requete= $connexion->query("INSERT INTO listes (nom, id_utilisateur) VALUES ('$nom', '$iduser')");
+        
         }
 
     }
@@ -106,8 +107,11 @@ class tache
        $requetaff = $connexion->query("SELECT nom FROM listes WHERE id_utilisateur= '". $iduser ."'");
 
        $resul=$requetaff->fetchAll();
-       echo json_encode($resul);
-       return $resul;
+       //echo json_encode($resul);
+       //return $resul;
+       foreach ($resul as $li) {
+         echo $li[0];
+       }
     }
 
 }

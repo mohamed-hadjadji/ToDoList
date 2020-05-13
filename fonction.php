@@ -6,22 +6,27 @@
 
  $tache = new tache();
 
-if(isset($_POST["function"]) ==  "newlist")
+if(isset($_POST["function"]) )
 {
-
+	$function= $_POST["function"];
+ switch($function)	 
+{
+    case "newlist":
 	
 		$iduser = $_SESSION["id"];
-		$nom = $_POST['titre'];
+		$nom = $_POST["nom"];
 
 		$tache->newlist($nom, $iduser);
-}
+    break;
 
-if(isset($_POST["function"]) == "afficherlist")
-{
+    case "afficherlist":
+
 	
 	    $iduser = $_SESSION["id"];
-	    $tache->afficherlist($iduser);   
+	    $tache->afficherlist($iduser); 
+	break;  
 
+}
 }
 
  

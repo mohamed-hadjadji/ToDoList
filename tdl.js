@@ -1,6 +1,6 @@
 $(document).ready(function () {
     newlist();
-    afficherlist();
+   
 })   
    function newlist() {
     $('#ajoutliste').keyup(function (event) {
@@ -16,9 +16,9 @@ $(document).ready(function () {
         $.ajax({
             method: "POST",
             url: "fonction.php",
-            data: {'function': 'newlist', 'titre': nom},
+            data: {'function': 'newlist', nom: nom},
             datatype: "json",
-        
+        success:function(data) { afficherlist(); }
         
         }).done(function(msg){
            
@@ -28,18 +28,21 @@ $(document).ready(function () {
         
         $('#ajoutliste').val('');
         });
+     afficherlist();
     }
 
    function afficherlist() {
     $.ajax({
-        method: "POST",
         url: "fonction.php",
+        type: "POST",
         data: { 'function': 'afficherlist'},
-        datatype: "json",
-    }).done(function(msg){
+        cache: false,
+        success: function(data){
            
-        console.log(msg);
-            });
+            $('#listes').html(data); 
+        }
+    });
+
     }
 
         
