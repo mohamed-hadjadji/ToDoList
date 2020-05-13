@@ -15,7 +15,7 @@ $(document).ready(function () {
             url: "fonction.php",
             data: {'function': 'newlist', 'titre': nom},
         }).done(function(msg){
-           
+           location.reload();
         console.log(msg);
             });
          }

@@ -1,5 +1,6 @@
 <?php
 
+
 class user
 {
 	private $id;
@@ -120,18 +121,21 @@ function recupDonner()
     $connexion=mysqli_connect("localhost","root","","tdl");
     
     $id = $_SESSION['id'];
-    $reqdonner = "SELECT nom FROM listes as n INNER JOIN utilisateurs = id_utilisateur where id_utilisateur= $id";
-   
+    $reqdonner = "SELECT nom FROM listes   where id_utilisateur= '$id' ORDER BY listes.id DESC";
+    $compte = "SELECT nom FROM listes where id_utilisateur= '$id'";
     $requet_exec = mysqli_query($connexion,$reqdonner);
     $liste_tabl = mysqli_fetch_all($requet_exec);
-  
-     
-    $count = mysqli_num_rows($requet_exec);
+    $conte = mysqli_query($connexion,$compte);
 
-
-  for ($i=0; $i <$count ; $i++)
-     { 
-      echo $liste_tabl[$i][0]."<br/>";
-     }  
+    $count = mysqli_num_rows($conte);
+    var_dump($count);
+    var_dump($compte);
+    $i =0;
+    while ( $i< $count) 
+      {
+        echo $liste_tabl[$i][0]."<br/>";
+        $i++;
+      }  
   }
+
 ?>

@@ -31,12 +31,14 @@ if (isset($_SESSION['login']))
 	        
 	        <section class="sectionliste">
 	            <article class="creatliste">
+	            	<form action="#">
 		                <input id='ajoutliste' placeholder='Ajouter une liste' type='text'>
-		                <button id='validliste'>Ajouter une liste</button>
+		                <button  id='validliste' >Ajouter une liste</button>
+		           </form>     
 	            </article>
 			    <article  id='tachefini'>
 			    	<p>Taches Accomplies</p>
-			    	<p><?php recupDonner() ; ?></p>
+			    	<p id="oc-liste" ><?php recupDonner() ; ?></p>
 			    </article>
 	        </section>
 	        
