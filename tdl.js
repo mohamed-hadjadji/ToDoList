@@ -1,5 +1,8 @@
 $(document).ready(function () {
-   
+    newlist();
+    afficherlist();
+})   
+   function newlist() {
     $('#ajoutliste').keyup(function (event) {
         if (event.keyCode == 13) {
             $('#validliste').click();
@@ -14,6 +17,9 @@ $(document).ready(function () {
             method: "POST",
             url: "fonction.php",
             data: {'function': 'newlist', 'titre': nom},
+            datatype: "json",
+        
+        
         }).done(function(msg){
            
         console.log(msg);
@@ -22,8 +28,20 @@ $(document).ready(function () {
         
         $('#ajoutliste').val('');
         });
+    }
 
-});
+   function afficherlist() {
+    $.ajax({
+        method: "POST",
+        url: "fonction.php",
+        data: { 'function': 'afficherlist'},
+        datatype: "json",
+    }).done(function(msg){
+           
+        console.log(msg);
+            });
+    }
+
         
 
 

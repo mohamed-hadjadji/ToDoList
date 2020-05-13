@@ -33,6 +33,7 @@ if (isset($_SESSION['login']))
 	            <article class="creatliste">
 		                <input id='ajoutliste' placeholder='Ajouter une liste' type='text'>
 		                <button id='validliste'>Ajouter une liste</button>
+		      
 	            </article>
 			    <article  id='tachefini'>
 			    	<p>Taches Accomplies</p>

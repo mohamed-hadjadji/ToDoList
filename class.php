@@ -103,9 +103,10 @@ class tache
     {
         $connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
 
-       $requetaff = $connexion->query("SELECT * FROM listes WHERE id_utilisateur= '". $iduser ."'");
+       $requetaff = $connexion->query("SELECT nom FROM listes WHERE id_utilisateur= '". $iduser ."'");
 
        $resul=$requetaff->fetchAll();
+       echo json_encode($resul);
        return $resul;
     }
 
