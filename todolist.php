@@ -16,8 +16,9 @@ if (isset($_SESSION['login']))
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
 	    <script type = "text/javascript" src='https://code.jquery.com/jquery-3.4.1.js'></script>
-	    <link rel='stylesheet' href=''>
+	    
 	    <script type = "text/javascript" src='tdl.js'></script>
+	    <link rel='stylesheet' href='styles/tdl.css'>
 	    <title> To Do List </title>
 	</head>
 

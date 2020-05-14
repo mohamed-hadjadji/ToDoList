@@ -104,14 +104,19 @@ class tache
     {
         $connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
 
-       $requetaff = $connexion->query("SELECT nom FROM listes WHERE id_utilisateur= '". $iduser ."'");
+       $requetaff = $connexion->query("SELECT nom FROM listes WHERE id_utilisateur= $iduser ORDER BY id ASC");
 
        $resul=$requetaff->fetchAll();
        //echo json_encode($resul);
        //return $resul;
        foreach ($resul as $li) {
-         echo $li[0];
+         echo "<div class='list'>".$li[0]."<input id='ajout_tache' type='text' placeholder='Ajouter une tache'></div>";
+       
        }
+    }
+    public function newtache($iduser)
+    {
+
     }
 
 }
