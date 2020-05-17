@@ -16,7 +16,7 @@ if(isset($_GET['deconnexion']))
 if(!isset($_SESSION['login']))
 {
       
-    include("class.php");
+    include("class/class.php");
 	
     $user = new user();
 
