@@ -14,19 +14,20 @@ $(document).ready(function () {
     });  
 
     $('#valid-tache').click(function () {
-        var nom = document.getElementById('ajout-tache').value; 
+        var nom = $('#ajout-tache').val(); 
         if (nom != '') {
         $.ajax({
             method: "POST",
             url: "fonction.php",
             data: {'function': 'newtache', 'nom': nom},
             datatype: "json",    
-        
+        success: function(data){
+         gettache();
+        }
         }).done(function(msg){
            
         console.log(msg);
             });
-        gettache();
          }
         
         $('#ajout-tache').val('');
@@ -37,7 +38,7 @@ $(document).ready(function () {
 
    function gettache() {
    
-    $('.td').remove();
+    $('.tach').remove();
     $.ajax({
         url: "fonction.php",
         method: "POST",
@@ -48,16 +49,16 @@ $(document).ready(function () {
            
            var data = JSON.parse(datatype);
             for (i = 0; i < data.length; i++) {
-                $('#taches').append("<div class='td' id='to" + i +"'>");
+                $('#taches').append("<div class='tach' id='todo" + i +"'>");
                 $.each(data[i], function (key,value) {
                     if(key !== "id")
                     {
-                        $('#to' + i + "").append("<b>" + key + "</b>" + ":" + value + '</br></div>');
+                        $('#todo' + i + "").append("<b>" + key + "</b>" + ":" + " " + value + '</br></div>');
                     } 
                     else if(key === "id")
                     {
-                        $('#to' + i + "").append("<button class='button' id='ann" + value + "'>Annuler</button>");
-                        $('#to' + i + "").append("<button class='button' id='acc" + value + "'>Accomplie</button></br>");
+                        $('#todo' + i + "").append("<button class='btn btn-outline-danger' id='ann" + value + "'>Annuler</button>");
+                        $('#todo' + i + "").append("<button class='btn btn-outline-primary' id='acc" + value + "'>Accomplie</button></br>");
                        
                        supptache(value);
                        tachefini(value);
@@ -102,7 +103,7 @@ $(document).ready(function () {
     }
 
     function gettachea(){
-        $('.tf').remove();
+        $('.tafin').remove();
         $.ajax({
             url: "fonction.php",
             method: "POST",
@@ -115,11 +116,11 @@ $(document).ready(function () {
 
         
                 for (i = 0; i < data.length; i++) {
-                    $('#tachefi').append("<div class='tf' id='fi" + i +"'>");
+                    $('#tachefi').append("<div class='tafin' id='fini" + i +"'>");
                     $.each(data[i], function (key,value) {
                         if(key !== "id")
                         {
-                            $('#fi' + i + "").append("<b>" + key + "</b>" + ":" + value + '</br>');
+                            $('#fini' + i + "").append("<b>" + key + "</b>" + ":"+ " " + value + '</br>');
                         } 
         
                     })

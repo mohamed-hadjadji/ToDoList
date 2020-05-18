@@ -76,6 +76,22 @@ if(!isset($_SESSION['login']))
                                     <input type='password' class="form-control"  placeholder="Confirmation mot de passe" name='mdp2' required>
                                 </div>
                             </div>
+                            <?php
+                                    if(isset($_GET['erreur1']))
+                                    {
+                                        $err = $_GET['erreur1'];
+                                        if($err==1 || $err==2)
+                                            echo "<p class='erreur'><b>*Login existe déja !!</b></p>*";
+                                    }
+
+                                    if(isset($_GET['erreur2']))
+                                    {
+                                        $err = $_GET['erreur2'];
+                                        if($err==1 || $err==2)
+                                            echo "<p class='erreur'><b>Les mots de passe doivent être identique!</b></p>";
+                                    }
+                                    
+                            ?>
                             <div class="bout row justify-content-center">
                                 <button class="btn btn-outline-success my-4 my-sm-0" type='submit' name='inscription'>Inscription</button>
                             </div>

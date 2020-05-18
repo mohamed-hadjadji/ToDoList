@@ -9,23 +9,98 @@
 	padding: 50px;
 	margin-bottom: 150px;
 }
+.erreur{
+	color: red;
+	text-align: center;
+	font-size: 20px;
+}
 
 .foot{
 	display: flex;
 	justify-content: center;
 	font-size: 20px;
-	padding: 10px;	
+	padding: 10px;
+	color: white;	
 }
 
+.headto{
+    margin-bottom: 80px;
+}
+.nav{
+	display: flex;
+	justify-content: space-between;
+	color: white;
+	width: 100%;
+	text-decoration: none;
+}
+.nav a{
+	text-decoration: none;
+	color: white;
+}
+.form{
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+#forma{
+	display: flex;
+    justify-content: center;
+    width: 50%;
+}
 
 #taches{
    display: flex;
    justify-content: space-around;
    flex-wrap: wrap;
+   padding: 30px;
+ 
 }
-.list{
-	display: flex;
-	flex-direction: column;
-	margin: 30px;
 
+.tach{
+	background-color: #eff571f0;
+    padding: 20px;
+    border:solid;
+	border-color: #a2d0ceeb;
+	border-width: 7px;
+	border-top-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	margin: 20px;
+	font-size: 18px;
+	font-family: 'Comic Sans MS';
+}
+.btn-outline-primary{
+    margin-top: 20px;
+}
+.btn-outline-danger{
+	margin-right: 10px;
+	margin-top: 20px;
+}
+.accomplie{
+	display: flex;
+	justify-content: center;
+}
+#acco{
+	  width: 80%;
+	  margin-bottom: 120px;
+	  padding: 40px;
+}
+#tachefi{
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   padding: 30px;
+ 
+}
+
+.tafin{
+	background-color: #71f5e6f0;
+    padding: 20px;
+    border:solid;
+	border-color: #a2d0ceeb;
+	border-width: 7px;
+	border-top-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	margin: 20px;
+	font-size: 18px;
+	font-family: 'Comic Sans MS';
 }
