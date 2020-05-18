@@ -23,7 +23,7 @@ class user
             if ($resultat[$key][1]==$_POST['login'])
             {
                $trouve=true;
-               echo "<p class='erreur'><b>Login existe déja !!</b></p>";
+               header('Location: index.php?erreur1=1'); // login existe déja
             }
            }
            if ($trouve==false)
@@ -35,7 +35,7 @@ class user
            }
            else
            {
-              echo "<p class='erreur'><b>Les mots de passe doivent être identique!</b></p>";
+              header('Location: index.php?erreur2=1'); // Les mots de passe doivent être identique
            }	
     }
 
@@ -82,21 +82,53 @@ class user
 
 class tache
 {
-    private $id;
+    private $iduser;
     public $nom;
 
-    public function newlist($nom,$iduser)
+
+    public function newtache($nom,$iduser)
     {
-    	$connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
+        $connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
 
-    	$reponse = $connexion->query("SELECT* FROM listes WHERE nom='".$nom."' AND id_utilisateur='".$iduser."'");
-        $resultat=$reponse->fetchAll();
+        $reponseta = $connexion->query("SELECT * FROM taches WHERE nom='".$nom."' AND id_utilisateur='".$iduser."'");
+        $resultache=$reponseta->fetchAll();
 
-        if(empty($resultat))
+        if(empty($resultache))
         {
-        $requete= $connexion->query("INSERT INTO listes (nom, id_utilisateur) VALUES ('$nom', '$iduser')");
+        $requeteta= $connexion->query("INSERT INTO taches (nom, date_creation, etat, id_utilisateur) VALUES ('$nom', NOW(), 'en-cours', '$iduser')");    
         }
+    }
 
+    public function gettache($iduser)
+    {
+      $connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
+      $reponseget = $connexion->query("SELECT nom, date_creation, etat, id FROM taches WHERE id_utilisateur= $iduser AND etat = 'en-cours' ORDER BY id ASC");
+      $reponseget->execute();
+      $resultat = $reponseget->fetchAll(PDO::FETCH_ASSOC);
+      echo json_encode($resultat);
+    }
+
+    public function supptache($idtache)
+    {
+        $connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
+        $repensesup = $connexion->query("DELETE FROM taches WHERE id = '$idtache'");
+        $repensesup->execute();
+    }
+
+    public function tachefini($idtache)
+    {
+        $connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
+        $repensefin = $connexion->query("UPDATE taches SET etat = 'accomplie', date_fin = NOW() WHERE id = '$idtache'");
+        $repensefin->execute();
+    }
+
+    public function gettachea($iduser)
+    {
+      $connexion = new PDO('mysql:host=localhost;dbname=tdl', 'root', '');
+      $reponsegeta = $connexion->query("SELECT nom, date_creation, etat, date_fin FROM taches WHERE id_utilisateur= $iduser AND etat = 'accomplie' ORDER BY id ASC");
+      $reponsegeta->execute();
+      $resultat = $reponsegeta->fetchAll(PDO::FETCH_ASSOC);
+      echo json_encode($resultat);
     }
 
 }
