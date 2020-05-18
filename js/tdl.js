@@ -56,8 +56,8 @@ $(document).ready(function () {
                     } 
                     else if(key === "id")
                     {
-                        $('#to' + i + "").append("<button class='button' id='sup" + value + "'>Supprimer</button>");
-                        $('#to' + i + "").append("<button class='button' id='fin" + value + "'>C'est fait!</button></br>");
+                        $('#to' + i + "").append("<button class='button' id='ann" + value + "'>Annuler</button>");
+                        $('#to' + i + "").append("<button class='button' id='acc" + value + "'>Accomplie</button></br>");
                        
                        supptache(value);
                        tachefini(value);
@@ -73,7 +73,7 @@ $(document).ready(function () {
    }
 
     function supptache(value){
-        $('#sup' + value + "").click(function(){
+        $('#ann' + value + "").click(function(){
     
             $.ajax({
                 url: "fonction.php",
@@ -87,7 +87,7 @@ $(document).ready(function () {
     }
 
     function tachefini(value){
-        $('#fin' + value + "").click(function(){
+        $('#acc' + value + "").click(function(){
     
             $.ajax({
                 url: "fonction.php",
